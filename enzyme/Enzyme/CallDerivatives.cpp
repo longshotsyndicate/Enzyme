@@ -4129,6 +4129,7 @@ bool AdjointGenerator::handleKnownCallDerivatives(
         return true;
       }
       eraseIfUnused(call);
+      return true;
     }
     auto callval = call.getCalledOperand();
 
