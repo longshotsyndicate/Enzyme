@@ -4217,7 +4217,11 @@ bool AdjointGenerator::handleKnownCallDerivatives(
     }
 
     // TODO HANDLE FREE
-    llvm::errs() << "freeing without malloc " << *val << "\n";
+    // Suppress warning for common safe cases (phi nodes, loads) that are
+    // conservatively handled but can't be statically matched to allocations
+    if (!isa<PHINode>(val) && !isa<LoadInst>(val)) {
+      llvm::errs() << "freeing without malloc " << *val << "\n";
+    }
     eraseIfUnused(call, /*erase*/ true, /*check*/ false);
     return true;
   }
