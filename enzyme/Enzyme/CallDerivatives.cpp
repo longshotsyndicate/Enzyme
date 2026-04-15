@@ -4216,7 +4216,7 @@ bool AdjointGenerator::handleKnownCallDerivatives(
     }
 
     // TODO HANDLE FREE
-    llvm::errs() << "freeing without malloc " << *val << "\n";
+    // llvm::errs() << "freeing without malloc " << *val << "\n";
     eraseIfUnused(call, /*erase*/ true, /*check*/ false);
     return true;
   }
