@@ -2397,8 +2397,6 @@ const AugmentedReturn &EnzymeLogic::CreateAugmentedPrimal(
 
     std::map<AugmentedStruct, int> returnMapping;
     if (!foundcalled->getReturnType()->isVoidTy()) {
-      llvm::errs() << " aug: todiff: " << *todiff << "\n\n"
-                   << "aug foundcalled: " << *foundcalled << "\n";
       if (foundcalled->getReturnType() == todiff->getReturnType())
         returnMapping[AugmentedStruct::Return] = -1;
       else
